@@ -17,7 +17,7 @@ def build_token_to_id_vocab(sentences, specials=('<pad>', '<bos>', '<eos>', '<un
 
     # 2. corpus tokens in first-seen order
     for sentence in sentences:
-        for token in sentence.split(' '):
+        for token in sentence.split():
             if token not in token_to_id:
                 token_to_id[token] = len(token_to_id)
             
@@ -33,8 +33,16 @@ def build_id_to_token_vocab(token_to_id):
 
     return id_to_token
 
-# Step 3 - encode_sentence_to_ids (not yet solved)
-# TODO: implement
+# Step 3 - encode_sentence_to_ids
+def encode_sentence_to_ids(sentence, token_to_id, unk_token='<unk>'):
+    token_ids = []
+    unk_id = token_to_id[unk_token]
+
+    for token in sentence.split():
+        token_id = token_to_id.get(token, unk_id)
+        token_ids.append(token_id)
+
+    return token_ids
 
 # Step 4 - decode_ids_to_tokens (not yet solved)
 # TODO: implement
