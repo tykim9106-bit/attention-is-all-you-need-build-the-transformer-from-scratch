@@ -54,8 +54,9 @@ def decode_ids_to_tokens(ids, id_to_token):
 
     return tokens
 
-# Step 5 - pad_id_sequence (not yet solved)
-# TODO: implement
+# Step 5 - pad_id_sequence
+def pad_id_sequence(ids, max_len, pad_id):
+    return (ids + [pad_id] * max_len)[:max_len]
 
 # Step 6 - stack_padded_sequences_to_batch (not yet solved)
 # TODO: implement
